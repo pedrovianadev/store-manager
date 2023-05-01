@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
 const { salesModel, productsModel } = require('../../../src/models');
-const { salesService } = require('../../../src/services/');
+const { salesService } = require('../../../src/services');
 const { salesMock, insertMock } = require('./mocks/salesServiceMock');
 
 describe('Test sales service', () => {

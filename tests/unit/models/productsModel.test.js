@@ -22,4 +22,10 @@ describe('Test products model', () => {
 
     expect(result).to.be.deep.equal(products[0]);
   });
+
+  it('Insert new product', async () => {
+    sinon.stub(connection, 'execute').resolves([{ insertId: 1 }]);
+    const result = await productsModel.insertProduct('ProdutoX');
+    expect(result).to.be.deep.equal(1);
+  });
 });

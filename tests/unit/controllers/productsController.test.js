@@ -81,4 +81,28 @@ describe("test products controller", () => {
 
     expect(res.json).to.have.been.calledWith({ message: 'Product not found' });
   });
+
+  it('Insert a new Product', async () => {
+    const req = {
+      body: {
+        name: 'ProdutoX',
+      },
+    };
+    const res = {};
+
+    res.status = sinon.stub().returns(res);
+
+    res.json = sinon.stub().returns();
+
+    sinon.stub(productsService, 'insertProduct')
+      .resolves({
+        type: null,
+        message: productMockController,
+      });
+
+    await productsController.insertProduct(req, res);
+
+    expect(res.status).to.have.been.calledWith(201);
+    expect(res.json).to.have.been.calledWith(productMockController);
+  });
 });
